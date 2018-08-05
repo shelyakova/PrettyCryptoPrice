@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+
 import axios from "axios";
 import Select from 'react-select';
+import CryptoCurrency from './CryptoCurrency.js';
+import './App.css';
 
 const options = [
   { value: 'USD', label: 'USD', icon: '$' },
@@ -9,60 +12,74 @@ const options = [
   { value: 'GBP', label: 'GBP', icon: '₴' }
 ];
 
+
 class App extends Component {
   state = {
-    currency: "EUR",
-    cryptos: [],
-    selectedOption: { value: 'GBP', label: 'GBP', icon: '₴' }
+    ETH: [],
+    LTC: [],
+    BTC: [],
+    selectedOption: { value: 'GBP', label: 'GBP', icon: '₴' },
+    cryptoCurrencies: {
+      Ethereum: 'ETH',
+      Litecoin: 'LTC',
+      Bitcoin: 'BTC'
+    }
   };
 
-  getData(currency) {
-    axios.get('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC'+currency)
+  getData(crypto, currency) {
+    axios.get('https://apiv2.bitcoinaverage.com/indices/global/ticker/'
+    + crypto
+    + currency)
     .then(res => {
       const cryptos = res.data;
-      this.setState({cryptos: cryptos});
-      console.log(cryptos.changes.price.day);
+      crypto === 'BTC' && this.setState({BTC: cryptos});
+      crypto === 'LTC' && this.setState({LTC: cryptos});
+      crypto === 'ETH' && this.setState({ETH: cryptos});
     })
   }
 
-
   render() {
-    const { selectedOption, cryptos } = this.state;
+    const { selectedOption } = this.state;
       return (
               <div>
-                <Select
-                  value={selectedOption}
-                  onChange={(selectedOption) => {
-                    this.setState({ selectedOption });
-                    this.getData(selectedOption.value);
-                  }}
-                  options={options}
-                />
-                <div>
-                  <b>BTC</b>
-                  <br />
-
-                  <label>Current price:</label>
-                  {cryptos.ask}
-                  {cryptos.ask && selectedOption.icon}
-                  <br />
-
-                  <label>Hour change:</label>
-                  {cryptos.ask && cryptos.changes.price.hour}
-                  <br />
-
-                  <label>Day change:</label>
-                  {cryptos.ask && cryptos.changes.price.day}
-                  <br />
-
-                  <label>Week change:</label>
-                  {cryptos.ask && cryptos.changes.price.week}
-                  <br />
-
-                  <label>Month change:</label>
-                  {cryptos.ask && cryptos.changes.price.month}
-                  <br />
-
+                <div className="head">
+                  <div className="headText">
+                    Select currency to exchange:
+                  </div>
+                  <Select
+                    className="selectCurrency"
+                    value={selectedOption}
+                    onChange={(selectedOption) => {
+                      this.setState({ selectedOption });
+                      Object.values(this.state.cryptoCurrencies).map((item, key) => {
+                        return this.getData(item, selectedOption.value);
+                      });
+                    }}
+                    options={options}
+                  />
+                </div>
+                <div className="crytosPosition">
+                  <div className='Ethereum'>
+                    <CryptoCurrency
+                      name='Ethereum'
+                      crypto={this.state.ETH}
+                      icon={this.state.selectedOption.icon}
+                    />
+                  </div>
+                  <div className="Litecoin">
+                    <CryptoCurrency
+                      name='Litecoin'
+                      crypto={this.state.LTC}
+                      icon={this.state.selectedOption.icon}
+                    />
+                  </div>
+                  <div className="Bitcoin">
+                    <CryptoCurrency
+                      name='Bitcoin'
+                      crypto={this.state.BTC}
+                      icon={this.state.selectedOption.icon}
+                    />
+                  </div>
                 </div>
               </div>
             );

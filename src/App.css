@@ -1,28 +1,125 @@
-.App {
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400i,700);
+
+body {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background: url(./images/background.png) no-repeat;
+  background-color: #0f1e27;
   color: white;
+  background-size: 100%;
+  font-weight: bold;
+  font-family: Roboto;
 }
 
-.App-title {
-  font-size: 1.5em;
+.head {
+  position: relative;
+  top: 30px;
+  left: 225px;
+  width: 480px;
+  height: 70px;
+  border: 1px solid;
+  border-color: #2b3b45;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.05);
+  color: black;
 }
 
-.App-intro {
+.headText {
+  color: white;
+  width: 300px;
+  float: left;
+  margin: 25px 0 25px;
+  font-family: Arial, sans-serif;
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.selectCurrency {
+  margin: 15px;
+  width: 135px;
+  float: right;
+}
+
+.Ethereum {
+  float: left;
+  background: url(./images/Ethereum.png) no-repeat;
+  background-size: 100%;
+  width: 210px;
+  padding: 25px;
+  margin: 10px;
+  text-align: center;
+}
+
+.Litecoin {
+  float: left;
+  background: url(./images/Litecoin.png) no-repeat;
+  background-size: 100%;
+  width: 210px;
+  padding: 25px;
+  margin: 10px;
+  text-align: center;
+}
+
+.Bitcoin {
+  float: left;
+  background: url(./images/Bitcoin.png) no-repeat;
+  background-size: 100%;
+  width: 210px;
+  padding: 25px;
+  margin: 10px;
+  text-align: center;
+}
+
+.crytosPosition {
+  position: relative;
+  left: 35px;
+  top: 30px;
+}
+
+.image {
+  height: 110px;
+}
+.price, .switch {
+  display: block;
+  position: relative;
+  height: 30px;
+}
+
+.priceText {
+  float: left;
+}
+
+.switchName {
+  float: left;
+  font-size: small;
+  font-weight: bold;
+}
+
+.priceNumber, .switchButton {
+  float: right;
+}
+
+.textName {
+  text-align: left;
+  width: 120px;
+  margin: 10px;
+  font-size: small;
+  font-weight: bold;
+  color: rgba(255,255,255,0.3);
+}
+
+table {
+  width: 200px;
+}
+
+.plusPrice {
+  color: #c80e24;
+  text-align: right;
+  margin: 10px;
+  font-size: small;
+}
+
+.minusPrice {
+  color: #70c446;
+  text-align: right;
+  margin: 10px;
+  font-size: small;
 }
