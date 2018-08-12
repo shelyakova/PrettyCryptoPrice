@@ -72,6 +72,8 @@ class CryptoCurrency extends Component {
                         crypto.ask && crypto.changes.percent.hour < 0 ?
                         'plusPrice' : 'minusPrice'
                       }>
+                        {crypto.ask && crypto.changes.percent.hour > 0 &&
+                          '+'}
                         {crypto.ask && this.state.checked === false &&
                            crypto.changes.percent.hour+'%'}
                         {crypto.ask && this.state.checked === true &&
@@ -86,6 +88,8 @@ class CryptoCurrency extends Component {
                         crypto.ask && crypto.changes.percent.day < 0 ?
                         'plusPrice' : 'minusPrice'
                       }>
+                        {crypto.ask && crypto.changes.percent.day > 0 &&
+                          '+'}
                         {crypto.ask && this.state.checked === false &&
                          crypto.changes.percent.day+'%'}
                         {crypto.ask && this.state.checked === true &&
@@ -100,6 +104,8 @@ class CryptoCurrency extends Component {
                         crypto.ask && crypto.changes.percent.week < 0 ?
                         'plusPrice' : 'minusPrice'
                       }>
+                        {crypto.ask && crypto.changes.percent.week > 0 &&
+                          '+'}
                         {crypto.ask && this.state.checked === false &&
                          crypto.changes.percent.week+'%'}
                         {crypto.ask && this.state.checked === true &&
@@ -114,6 +120,8 @@ class CryptoCurrency extends Component {
                         crypto.ask && crypto.changes.percent.month < 0 ?
                         'plusPrice' : 'minusPrice'
                       }>
+                        {crypto.ask && crypto.changes.percent.month > 0 &&
+                          '+'}
                         {crypto.ask && this.state.checked === false &&
                            crypto.changes.percent.month+'%'}
                         {crypto.ask && this.state.checked === true &&
