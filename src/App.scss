@@ -1,95 +1,93 @@
 @charset 'UTF-8';
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,400i,700);
-@import 'settings';
 
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  min-height: 100%;
+  text-align: center;
+  background: url(./images/background.png) no-repeat;
+  background-color: #0f1e27;
+  color: white;
+  background-size: 100%;
+  font-weight: bold;
+  font-family: Roboto; }
 
+.container {
+  padding: 25px 0 0 0;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .head {
-  position: relative;
-  top: 30px;
-  left: 225px;
-  width: 480px;
-  height: 70px;
+  display: flex;
+  width: 60%;
+  height: 10%;
   border: 1px solid;
   border-color: #2b3b45;
   border-radius: 8px;
-  background-color: rgba(255,255,255,0.05);
+  background-color: rgba(255, 255, 255, 0.05);
   color: black;
 }
 
 .headText {
+  justify-content: flex-start;
   color: white;
-  width: 300px;
-  float: left;
-  margin: 25px 0 25px;
+  width: 62%;
+  margin: 15px;
   font-family: Arial, sans-serif;
-  font-size: large;
-}
+  font-size: large; }
 
 .selectCurrency {
+  justify-content: flex-end;
   margin: 15px;
-  width: 135px;
-  float: right;
+  width: 37%;
 }
 
-.Ethereum {
-  float: left;
-  background: url(./images/Ethereum.png) no-repeat;
-  background-size: 100%;
-  width: 210px;
-  padding: 25px;
-  margin: 10px;
-  text-align: center;
+@mixin cryptos ($name) {
+  .#{$name} {
+    background: url(./images/#{$name}.png) no-repeat;
+    background-size: 100%;
+    width: 210px;
+    padding: 25px;
+    margin: 10px;
+    text-align: center;
+  }
 }
 
-.Litecoin {
-  float: left;
-  background: url(./images/Litecoin.png) no-repeat;
-  background-size: 100%;
-  width: 210px;
-  padding: 25px;
-  margin: 10px;
-  text-align: center;
-}
+@include cryptos(Ethereum);
+@include cryptos(Litecoin);
+@include cryptos(Bitcoin);
 
-.Bitcoin {
-  float: left;
-  background: url(./images/Bitcoin.png) no-repeat;
-  background-size: 100%;
-  width: 210px;
-  padding: 25px;
-  margin: 10px;
-  text-align: center;
-}
-
+@media (min-width: 500px) {
 .crytosPosition {
-  position: relative;
-  left: 35px;
-  top: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+ }
 }
 
 .image {
-  height: 110px;
-}
+  height: 110px; }
+
 .price, .switch {
   display: block;
   position: relative;
-  height: 30px;
-}
+  height: 30px; }
 
 .priceText {
-  float: left;
-}
+  float: left; }
 
 .switchName {
   float: left;
   font-size: small;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .priceNumber, .switchButton {
-  float: right;
-}
+  float: right; }
 
 .textName {
   text-align: left;
@@ -97,23 +95,19 @@
   margin: 10px;
   font-size: small;
   font-weight: bold;
-  color: rgba(255,255,255,0.3);
-}
+  color: rgba(255, 255, 255, 0.3); }
 
 table {
-  width: 200px;
+  width: 200px; }
+
+@mixin price ($name, $color) {
+  .#{$name}Price {
+    color: $color;
+    text-align: right;
+    margin: 10px;
+    font-size: small;
+  }
 }
 
-.plusPrice {
-  color: #c80e24;
-  text-align: right;
-  margin: 10px;
-  font-size: small;
-}
-
-.minusPrice {
-  color: #70c446;
-  text-align: right;
-  margin: 10px;
-  font-size: small;
-}
+@include price(plus, #c80e24);
+@include price(minus, #70c446);

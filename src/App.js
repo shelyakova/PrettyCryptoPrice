@@ -32,6 +32,7 @@ class App extends Component {
     + currency)
     .then(res => {
       const cryptos = res.data;
+      console.log(cryptos);
       crypto === 'BTC' && this.setState({BTC: cryptos});
       crypto === 'LTC' && this.setState({LTC: cryptos});
       crypto === 'ETH' && this.setState({ETH: cryptos});
@@ -41,7 +42,7 @@ class App extends Component {
   render() {
     const { selectedOption } = this.state;
       return (
-              <div>
+              <div className="container">
                 <div className="head">
                   <div className="headText">
                     Select currency to exchange:

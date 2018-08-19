@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Switch from "react-switch";
 import './App.css';
-import icon from './images/icon.png';
 
 
 class CryptoCurrency extends Component {
@@ -64,6 +63,7 @@ class CryptoCurrency extends Component {
                   </div>
 
                   <table>
+                  <tbody>
                     <tr>
                       <td className="textName">
                         <label>Hour change:</label>
@@ -128,6 +128,7 @@ class CryptoCurrency extends Component {
                             crypto.changes.price.month+this.props.icon}
                       </td>
                     </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>
